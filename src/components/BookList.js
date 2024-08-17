@@ -3,11 +3,12 @@ import axios from 'axios';
 import Book from './Book';
 
 const url = 'http://localhost:5000'
+const urlRender = 'https://nodelibback.onrender.com'
 const BookList = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    axios.get(url+'/getBooks')
+    axios.get(urlRender+'/getBooks')
       .then(response => {
         setBooks(response.data);
       })
@@ -17,7 +18,7 @@ const BookList = () => {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(url + `/delete/${id}`)
+    axios.delete(urlRender + `/delete/${id}`)
       .then(() => {
         setBooks(books.filter(book => book._id !== id));
       })
